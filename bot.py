@@ -1,5 +1,4 @@
-from telegram import Update
-from telegram.ext import ApplicationBuilder, MessageHandler, ContextTypes, filters
+from telegram.ext import ApplicationBuilder, MessageHandler, CommandHandler, ContextTypes, filters
 
 TOKEN = "8686144572:AAHDKe2p540asJEdV2UH21MT3TmjcXhGU4g"
 
@@ -24,6 +23,8 @@ https://signal.me/#eu/6EqFuDg0mv6LTc4OnNvJ0wGR2zPZwhenbMCJ88ZP5ziQ0cyM1XZBqanXLT
 """)
 
 app = ApplicationBuilder().token(TOKEN).build()
+
+app.add_handler(CommandHandler("start", auto_reply))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, auto_reply))
 
 print("Bot is running...")
